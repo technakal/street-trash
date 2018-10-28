@@ -1,0 +1,155 @@
+@import url("https://fonts.googleapis.com/css?family=Bowlby+One+SC|Orbitron");
+
+:root {
+  --dark: 19, 8, 16;
+  --bright: 255, 236, 85;
+  --font-main: "Orbitron", sans-serif;
+  --font-title: "Bowlby One SC", cursive;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+body {
+  background: rgb(var(--dark));
+  font-family: var(--font-main);
+  margin: 0;
+  padding: 0.5 1rem;
+}
+
+header {
+  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-area: h;
+  justify-items: center;
+}
+
+h1 {
+  color: rgb(var(--dark));
+  font-family: var(--font-title);
+  font-size: 2.5rem;
+  line-height: 3rem;
+  text-shadow: 0 0 12px rgba(var(--bright), 1), 0 0 12px rgba(var(--bright), 1);
+}
+
+#instructions {
+  align-items: center;
+  color: rgba(var(--bright), 1);
+  display: flex;
+  flex-flow: column wrap;
+  font-size: 1rem;
+  justify-content: center;
+  text-align: center;
+}
+
+#diagnostics {
+  color: rgba(var(--bright), 1);
+  display: flex;
+  flex-flow: row wrap;
+  font-size: 0.75rem;
+  justify-content: space-evenly;
+}
+
+#app {
+  display: grid;
+  grid-gap: 15px;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "h h h"
+    "p b e"
+    "p . e";
+}
+
+h1,
+h2,
+h3,
+p,
+img {
+  user-select: none;
+}
+
+.overlay {
+  background: white;
+  border: 2px solid black;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.19), 0 10px 15px rgba(0, 0, 0, 0.23);
+  padding: 1rem;
+  position: absolute;
+  top: 5%;
+  z-index: 1000;
+}
+
+.hidden {
+  display: none;
+}
+
+/* CHARACTER CARDS */
+.character-card {
+  align-items: center;
+  background: black;
+  border: 1px solid black;
+  color: rgb(var(--bright));
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  margin: 1.5rem 0.5rem;
+  padding: 0;
+}
+
+.character-portrait {
+  max-width: 200px;
+}
+
+.staging {
+  grid-area: p;
+}
+
+.battleground {
+  grid-area: b;
+}
+
+.enemy-pool {
+  grid-area: e;
+}
+
+button {
+  background: rgb(var(--bright));
+  border: 1px solid black;
+  border-radius: 10px;
+  font-family: var(--font-main);
+  font-size: 1rem;
+  margin: 0.5rem;
+  padding: 0.75rem 1rem;
+}
+
+.hit-counter {
+  animation-name: damage;
+  animation-duration: 0.8s;
+  animation-fill-mode: forwards;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 7px;
+  color: rgb(var(--dark));
+  font-weight: 700;
+  text-align: center;
+}
+
+@keyframes damage {
+  0% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-60px);
+  }
+}
